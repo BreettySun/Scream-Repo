@@ -1,2 +1,0 @@
-Bretty Sun
-Loki Xu

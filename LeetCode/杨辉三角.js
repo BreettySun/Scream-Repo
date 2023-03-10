@@ -13,12 +13,12 @@ var generate = function (numRows) {
     let result = [[1], [1, 1]]
     let temp = [1]
     for (let i = 0; i < numNow; i++) {
-      for (let j = 0; j < i + 3 - 1; j++) {
+      for (let j = 0; j < i + 3 - 1; ++j) {
         if (j === i + 1) {
           temp.push(1)
           break
         }
-        let a = result[j + numNow - 2][j] + result[j + numNow - 2][j + 1]
+        let a = result[i + 1][j] + result[i + 1][j + 1]
         temp.push(a)
       }
       result.push(temp)
@@ -28,4 +28,4 @@ var generate = function (numRows) {
   }
 };
 
-console.log(generate(5));
+console.log(generate(4));

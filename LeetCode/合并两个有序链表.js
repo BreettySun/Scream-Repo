@@ -1,4 +1,11 @@
-/*
+/**
+ * Definition for singly-linked list.
+ * function ListNode(val, next) {
+ *     this.val = (val===undefined ? 0 : val)
+ *     this.next = (next===undefined ? null : next)
+ * }
+ */
+/**
  * 21. 合并两个有序链表
  * @param {ListNode} list1
  * @param {ListNode} list2

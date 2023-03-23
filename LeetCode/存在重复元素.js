@@ -16,7 +16,9 @@ var containsDuplicate = function (nums) {
 };
 
 /**
- * 哈希表解法
+ * @description: 哈希表解法
+ * @param {nunmber[]} nums
+ * @return {boolean}
  */
 var containsDuplicate1 = function (nums) {
   const set = new Set();

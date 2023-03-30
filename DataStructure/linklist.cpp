@@ -13,9 +13,10 @@
 #define ElemType int
 using namespace std;
 
-typedef struct LNode {
-	ElemType data = 0;
-	struct LNode *next;
+typedef struct LNode
+{
+  ElemType data = 0;
+  struct LNode *next;
 } LNode, *Linklist;
 
 /**
@@ -23,21 +24,23 @@ typedef struct LNode {
  * @param {Linklist} &L
  * @return {Linklist}
  */
-Linklist List_HeadInsert(Linklist &L) {
-	cout << "List_HeadInsert: ";
-	L = (Linklist)malloc(sizeof(LNode));
-	LNode *s;
-	int x;
-	L->next = nullptr;
-	scanf("%d", &x);
-	while (x != 9999) {
-		s = (LNode *)malloc(sizeof(LNode));
-		s->data = x;
-		s->next = L->next;
-		L->next = s;
-		scanf("%d", &x);
-	}
-	return L;
+Linklist List_HeadInsert(Linklist &L)
+{
+  cout << "List_HeadInsert: ";
+  L = (Linklist)malloc(sizeof(LNode));
+  LNode *s;
+  int x;
+  L->next = nullptr;
+  scanf("%d", &x);
+  while (x != 9999)
+  {
+    s = (LNode *)malloc(sizeof(LNode));
+    s->data = x;
+    s->next = L->next;
+    L->next = s;
+    scanf("%d", &x);
+  }
+  return L;
 }
 
 /**
@@ -45,21 +48,23 @@ Linklist List_HeadInsert(Linklist &L) {
  * @param {Linklist} &L
  * @return {Linklist}
  */
-Linklist List_TailInsert(Linklist &L) {
-	cout << "List_TailInsert: ";
-	L = (Linklist)malloc(sizeof(LNode));
-	LNode *s, *r = L;
-	int x;
-	scanf("%d", &x);
-	while (x != 9999) {
-		s = (LNode *)malloc(sizeof(LNode));
-		s->data = x;
-		r->next = s;
-		r = s;
-		scanf("%d", &x);
-	}
-	r->next = nullptr;
-	return L;
+Linklist List_TailInsert(Linklist &L)
+{
+  cout << "List_TailInsert: ";
+  L = (Linklist)malloc(sizeof(LNode));
+  LNode *s, *r = L;
+  int x;
+  scanf("%d", &x);
+  while (x != 9999)
+  {
+    s = (LNode *)malloc(sizeof(LNode));
+    s->data = x;
+    r->next = s;
+    r = s;
+    scanf("%d", &x);
+  }
+  r->next = nullptr;
+  return L;
 }
 
 /**
@@ -68,20 +73,25 @@ Linklist List_TailInsert(Linklist &L) {
  * @param {int} i
  * @return {LNode}
  */
-LNode *GetElem(Linklist L, int i) {
-	cout << "GetElem: ";
-	int j = 1;
-	LNode *p = L->next;
-	if (i == 0) {
-		return L;
-	} else if (i < 1) {
-		return nullptr;
-	}
-	while (p != nullptr && j < i) {
-		p = p->next;
-		j++;
-	}
-	return p;
+LNode *GetElem(Linklist L, int i)
+{
+  cout << "GetElem: ";
+  int j = 1;
+  LNode *p = L->next;
+  if (i == 0)
+  {
+    return L;
+  }
+  else if (i < 1)
+  {
+    return nullptr;
+  }
+  while (p != nullptr && j < i)
+  {
+    p = p->next;
+    j++;
+  }
+  return p;
 }
 
 /**
@@ -90,13 +100,15 @@ LNode *GetElem(Linklist L, int i) {
  * @param {ElemType} e
  * @return {LNode}
  */
-LNode *LocateElem(Linklist L, ElemType e) {
-	cout << "LocateElem: ";
-	LNode *p = L->next;
-	while (p != nullptr && p->data != e) {
-		p = p->next;
-	}
-	return p;
+LNode *LocateElem(Linklist L, ElemType e)
+{
+  cout << "LocateElem: ";
+  LNode *p = L->next;
+  while (p != nullptr && p->data != e)
+  {
+    p = p->next;
+  }
+  return p;
 }
 
 /**
@@ -105,15 +117,16 @@ LNode *LocateElem(Linklist L, ElemType e) {
  * @param {int} i
  * @return {bool}
  */
-void InsertElem(Linklist L, int i) {
-	cout << "InsertElem: ";
-	LNode *p = GetElem(L, i - 1);
-	LNode *s = (LNode *)malloc(sizeof(LNode));
-	ElemType x;
-	scanf("%d", &x);
-	s->data = x;
-	s->next = p->next;
-	p->next = s;
+void InsertElem(Linklist L, int i)
+{
+  cout << "InsertElem: ";
+  LNode *p = GetElem(L, i - 1);
+  LNode *s = (LNode *)malloc(sizeof(LNode));
+  ElemType x;
+  scanf("%d", &x);
+  s->data = x;
+  s->next = p->next;
+  p->next = s;
 }
 
 /**
@@ -122,12 +135,13 @@ void InsertElem(Linklist L, int i) {
  * @param {int} i
  * @return {bool}
  */
-void DeleteElem(Linklist L, int i) {
-	cout << "DeleteElem: ";
-	LNode *p = GetElem(L, i - 1);
-	LNode *q = p->next;
-	p->next = q->next;
-	free(q);
+void DeleteElem(Linklist L, int i)
+{
+  cout << "DeleteElem: ";
+  LNode *p = GetElem(L, i - 1);
+  LNode *q = p->next;
+  p->next = q->next;
+  free(q);
 }
 
 /**
@@ -135,8 +149,9 @@ void DeleteElem(Linklist L, int i) {
  * @param {Linklist} L
  * @return {bool}
  */
-bool Empty(Linklist L) {
-	return L->next == nullptr;
+bool Empty(Linklist L)
+{
+  return L->next == nullptr;
 }
 
 /**
@@ -144,8 +159,9 @@ bool Empty(Linklist L) {
  * @param {Linklist} L
  * @return {bool}
  */
-bool EmptyNoHead(Linklist L) {
-	return L == nullptr;
+bool EmptyNoHead(Linklist L)
+{
+  return L == nullptr;
 }
 
 /**
@@ -153,13 +169,15 @@ bool EmptyNoHead(Linklist L) {
  * @param {Linklist} L
  * @return {int}
  */
-int ListLength(Linklist L) {
-	int length = 0;
-	while (L->next != nullptr) {
-		L = L->next;
-		length++;
-	}
-	return length;
+int ListLength(Linklist L)
+{
+  int length = 0;
+  while (L->next != nullptr)
+  {
+    L = L->next;
+    length++;
+  }
+  return length;
 }
 
 /**
@@ -167,14 +185,18 @@ int ListLength(Linklist L) {
  * @param {Linklist} &L
  * @return {bool}
  */
-bool InitList(Linklist &L) {
-	L = (LNode *)malloc(sizeof(LNode));
-	if (L == nullptr) {
-		return false;
-	} else {
-		L->next = nullptr;
-		return true;
-	}
+bool InitList(Linklist &L)
+{
+  L = (LNode *)malloc(sizeof(LNode));
+  if (L == nullptr)
+  {
+    return false;
+  }
+  else
+  {
+    L->next = nullptr;
+    return true;
+  }
 }
 
 /**
@@ -182,9 +204,10 @@ bool InitList(Linklist &L) {
  * @param {Linklist} &L
  * @return {bool}
  */
-bool InitListNoHead(Linklist &L) {
-	L = nullptr;
-	return true;
+bool InitListNoHead(Linklist &L)
+{
+  L = nullptr;
+  return true;
 }
 
 /**
@@ -192,24 +215,27 @@ bool InitListNoHead(Linklist &L) {
  * @param {Linklist} L
  * @return {*}
  */
-void PrintList(Linklist L) {
-	int length = ListLength(L);
-	cout << "length: " << length << endl;
-	LNode *p = L->next;
-	for (int i = 0; i < length; i++) {
-		cout << p->data << " ";
-		p = p->next;
-	}
-	cout << endl;
+void PrintList(Linklist L)
+{
+  int length = ListLength(L);
+  cout << "length: " << length << endl;
+  LNode *p = L->next;
+  for (int i = 0; i < length; i++)
+  {
+    cout << p->data << " ";
+    p = p->next;
+  }
+  cout << endl;
 }
 
-int main() {
-	Linklist L;
-	List_HeadInsert(L);
-	PrintList(L);
-	InsertElem(L, 5);
-	PrintList(L);
-	DeleteElem(L, 4);
-	PrintList(L);
-	return 0;
+int main()
+{
+  Linklist L;
+  List_HeadInsert(L);
+  PrintList(L);
+  InsertElem(L, 5);
+  PrintList(L);
+  DeleteElem(L, 4);
+  PrintList(L);
+  return 0;
 }

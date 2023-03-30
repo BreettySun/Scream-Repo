@@ -100,18 +100,17 @@ LNode *LocateElem(Linklist L, ElemType e) {
 }
 
 /**
- * @description: 在第i个位置插入元素
+ * @description: 在第i个位置插入元素e
  * @param {Linklist} L
  * @param {int} i
+ * @param {ElemType} e
  * @return {bool}
  */
-void InsertElem(Linklist L, int i) {
+void InsertElem(Linklist L, int i, ElemType e) {
 	cout << "InsertElem: ";
 	LNode *p = GetElem(L, i - 1);
 	LNode *s = (LNode *)malloc(sizeof(LNode));
-	ElemType x;
-	scanf("%d", &x);
-	s->data = x;
+	s->data = e;
 	s->next = p->next;
 	p->next = s;
 }
@@ -207,7 +206,7 @@ int main() {
 	Linklist L;
 	List_HeadInsert(L);
 	PrintList(L);
-	InsertElem(L, 5);
+	InsertElem(L, 5, 10);
 	PrintList(L);
 	DeleteElem(L, 4);
 	PrintList(L);

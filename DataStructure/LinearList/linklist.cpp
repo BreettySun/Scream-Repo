@@ -2,8 +2,8 @@
  * @Author: BreettySun
  * @Date: 2023-03-23 20:38:59
  * @LastEditors: BreettySun
- * @LastEditTime: 2023-03-30 20:30:04
- * @FilePath: \Scream-Repo\DataStructure\linklist.cpp
+ * @LastEditTime: 2023-04-13 15:17:24
+ * @FilePath: \Scream-Repo\DataStructure\LinearList\linklist.cpp
  * @Description:
  *
  * Copyright (c) 2023 by BreettySun, All Rights Reserved.
@@ -69,7 +69,7 @@ Linklist List_TailInsert(Linklist &L) {
  * @return {LNode}
  */
 LNode *GetElem(Linklist L, int i) {
-	cout << "GetElem: ";
+	cout << "GetElem: " << i << " ";
 	int j = 1;
 	LNode *p = L->next;
 	if (i == 0) {
@@ -91,7 +91,7 @@ LNode *GetElem(Linklist L, int i) {
  * @return {LNode}
  */
 LNode *LocateElem(Linklist L, ElemType e) {
-	cout << "LocateElem: ";
+	cout << "LocateElem: " << e << " ";
 	LNode *p = L->next;
 	while (p != nullptr && p->data != e) {
 		p = p->next;
@@ -107,7 +107,7 @@ LNode *LocateElem(Linklist L, ElemType e) {
  * @return {bool}
  */
 void InsertElem(Linklist L, int i, ElemType e) {
-	cout << "InsertElem: ";
+	cout << "InsertElem: " << e << " ";
 	LNode *p = GetElem(L, i - 1);
 	LNode *s = (LNode *)malloc(sizeof(LNode));
 	s->data = e;
@@ -122,7 +122,7 @@ void InsertElem(Linklist L, int i, ElemType e) {
  * @return {bool}
  */
 void DeleteElem(Linklist L, int i) {
-	cout << "DeleteElem: ";
+	cout << "DeleteElem: " << i << " ";
 	LNode *p = GetElem(L, i - 1);
 	LNode *q = p->next;
 	p->next = q->next;
@@ -204,11 +204,23 @@ void PrintList(Linklist L) {
 
 int main() {
 	Linklist L;
+
 	List_HeadInsert(L);
 	PrintList(L);
 	InsertElem(L, 5, 10);
 	PrintList(L);
 	DeleteElem(L, 4);
 	PrintList(L);
+	InitList(L);
+
+	cout << endl;
+
+	List_TailInsert(L);
+	PrintList(L);
+	InsertElem(L, 5, 10);
+	PrintList(L);
+	DeleteElem(L, 4);
+	PrintList(L);
+
 	return 0;
 }

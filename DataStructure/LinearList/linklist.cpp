@@ -204,6 +204,7 @@ void PrintList(Linklist L) {
 
 int main() {
 	Linklist L;
+	InitList(L); 
 
 	List_HeadInsert(L);
 	PrintList(L);
@@ -211,8 +212,8 @@ int main() {
 	PrintList(L);
 	DeleteElem(L, 4);
 	PrintList(L);
+	
 	InitList(L);
-
 	cout << endl;
 
 	List_TailInsert(L);
